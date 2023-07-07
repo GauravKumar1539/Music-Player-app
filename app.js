@@ -26,8 +26,8 @@ const songs = [
         songImgPath: "./Source/song3.jpeg",
     },
 ];
-let path_id=1;
-let audio = new Audio(`./Source/song${path_id}.mp3`);
+let path_id=0;
+let audio = new Audio(`./Source/song${path_id+1}.mp3`);
 playBtn.addEventListener("click", function () {
     audio.paused ? audio.play() : audio.pause();
     if (playBtn.classList.contains("fa-play")) {
@@ -52,7 +52,8 @@ progressBar.addEventListener("change", () => {
 })
 prevBtn.addEventListener("click",()=>
 {
-    path_id=3;
+    path_id=path_id-1;
+    if(path_id<1) path_id=3;
     audio.src=`./Source/song${path_id}.mp3`;
     song_name.innerText="Photograph ";
     song_img.src=`./Source/song${path_id}.jpeg`;
@@ -64,7 +65,8 @@ prevBtn.addEventListener("click",()=>
 });
 nextBtn.addEventListener('click',()=>
 {
-    path_id=2;
+    path_id=path_id+1;
+    if(path_id>3) path_id=1;
     audio.src=`./Source/song${path_id}.mp3`;
     song_name.innerText="Let Me Love You ";
     song_img.src=`./Source/song${path_id}.jpeg`;
